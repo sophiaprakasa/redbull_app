@@ -148,7 +148,48 @@ modalContainer: {
     fontSize: 18,
     paddingVertical: 10,
   },
-    });
+
+
+//projectdetails
+myTasks: {
+  fontSize: 22,
+  marginTop: 50,
+  color: 'gray', // Adjust color as needed
+},
+buttonContainer: {
+  flexDirection: 'row',
+  // marginTop: 10,
+  justifyContent: 'center'
+},
+button: {
+  marginHorizontal: 10,
+},
+taskContainer: {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  marginVertical: 10,
+},
+inProgressContainer: {
+  flex: 1, 
+  justifyContent: 'center', 
+  alignItems: 'center'
+},
+inProgressBack: {
+  backgroundColor: 'white', 
+  padding: 20, 
+  borderRadius: 10, 
+  elevation: 5
+},
+inProgressPercentage: {
+  fontSize: 20, 
+  marginBottom: 20
+},
+slider: {
+  width: 200, 
+  height: 40
+},
+
+});
     
     
-    export default styles;
+export default styles;

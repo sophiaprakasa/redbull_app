@@ -3,11 +3,11 @@ import React from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginScreen from './screens/LoginScreen';
-import HomeScreen from './screens/HomeScreen';
+// import LoginScreen from './screens/LoginScreen';
+// import HomeScreen from './screens/HomeScreen';
 import { useState } from 'react';
 import Progress from './pages/Progress';
-import FixProgress from './pages/FixProgress'
+import ProjectDetails from './pages/ProjectDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,20 +15,15 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Progress">
-      <Stack.Screen
-          name="NewProgressScreen" // Provide a name for the new screen
-          component={FixProgress} // Use FixProgress as the component
-          options={{ headerShown: false }}
-          initialParams={{ searchText: '' }}
-        />
         <Stack.Screen
           name="Progress"
-          component={FixProgress}
+          component={Progress}
           options={{ headerShown: false }}
           initialParams={{ searchText: '' }}
         />
-        <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="ProjectDetails" component={ProjectDetails} options={{ headerShown: false }}/>
+        {/* <Stack.Screen options={{ headerShown: false }} name="Login" component={LoginScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

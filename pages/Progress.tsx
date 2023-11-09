@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, FlatList, TouchableOpacity, Modal, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import styles from '../styles'; // Update the path as necessary
 
@@ -41,6 +42,8 @@ const Progress = () => {
       return styles.percentGreen;
     }
   };
+
+  const navigation = useNavigation();
 
   let displayedProjects = filteredProjects;
   if (filterType === 'complete') {
@@ -104,15 +107,17 @@ const Progress = () => {
         data={displayedProjects.sort((a, b) => a.name.localeCompare(b.name))}
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
-          <View style={styles.projectItem}>
-            <View style={styles.projectContainer}>
-              <Text style={styles.projectName}>{item.name}</Text>
+          <TouchableOpacity onPress={() => navigation.navigate('ProjectDetails', { project: item })}>
+            <View style={styles.projectItem}>
+              <View style={styles.projectContainer}>
+                <Text style={styles.projectName}>{item.name}</Text>
+              </View>
+              <Text style={[styles.percentCompletion, getPercentColor(item.percentCompletion)]}>
+                {item.percentCompletion}% complete
+              </Text>
+              <View style={styles.separator} />
             </View>
-            <Text style={[styles.percentCompletion, getPercentColor(item.percentCompletion)]}>
-              {item.percentCompletion}% complete
-            </Text>
-            <View style={styles.separator} />
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>
